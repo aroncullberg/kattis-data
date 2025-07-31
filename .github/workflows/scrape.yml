@@ -1,0 +1,42 @@
+name: scrape-kattis-scores
+
+on:
+  schedule:
+    - cron: "*/15 * * * *" # every 15 min – GitHub allows 5 min granularity  [oai_citation:0‡GitHub Docs](https://docs.github.com/actions/learn-github-actions/events-that-trigger-workflows?utm_source=chatgpt.com)
+  workflow_dispatch: # run manually from the Actions tab
+
+permissions: # let the workflow push back to the repo
+  contents: write # uses the built-in GITHUB_TOKEN  [oai_citation:1‡GitHub Docs](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # keep history so git diff works
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scrape.py
+
+      - name: Commit & push if CSV changed
+        run: |
+          git config user.name  "kattis-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet --exit-code points.csv; then
+            echo "No change – skip commit"
+          else
+            git add points.csv
+            git commit -m "data: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push
+          fi
