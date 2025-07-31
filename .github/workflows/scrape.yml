@@ -2,7 +2,7 @@ name: scrape-kattis-scores
 
 on:
   schedule:
-    - cron: "*/15 * * * *" # every 15 min – GitHub allows 5 min granularity  [oai_citation:0‡GitHub Docs](https://docs.github.com/actions/learn-github-actions/events-that-trigger-workflows?utm_source=chatgpt.com)
+    - cron: "*/10 * * * *" # every 15 min – GitHub allows 5 min granularity  [oai_citation:0‡GitHub Docs](https://docs.github.com/actions/learn-github-actions/events-that-trigger-workflows?utm_source=chatgpt.com)
   workflow_dispatch: # run manually from the Actions tab
 
 permissions: # let the workflow push back to the repo
