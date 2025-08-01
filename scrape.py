@@ -12,9 +12,9 @@ FRIENDS = [
     "s4andersson",
     "rasmus-melin",
     "viktor6",
-]  # ↔ edit me
+]
 
-HEADERS = {"User-Agent": "kattis-friends-tracker/1.0 (+https://github.com/you)"}
+HEADERS = {"User-Agent": "kattis-friends-tracker/1.0 (+https://github.com/aroncullberg)"}
 
 
 def score_from_html(html: str) -> float:
