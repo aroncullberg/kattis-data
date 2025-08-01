@@ -2,11 +2,11 @@ name: scrape-kattis-scores
 
 on:
   schedule:
-    - cron: "*/10 * * * *" # every 15 min – GitHub allows 5 min granularity  [oai_citation:0‡GitHub Docs](https://docs.github.com/actions/learn-github-actions/events-that-trigger-workflows?utm_source=chatgpt.com)
-  workflow_dispatch: # run manually from the Actions tab
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
 
-permissions: # let the workflow push back to the repo
-  contents: write # uses the built-in GITHUB_TOKEN  [oai_citation:1‡GitHub Docs](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)
+permissions:
+  contents: write
 
 jobs:
   scrape:
@@ -16,7 +16,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # keep history so git diff works
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
