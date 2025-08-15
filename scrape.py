@@ -12,6 +12,7 @@ FRIENDS = [
     "s4andersson",
     "rasmus-melin",
     "viktor6",
+    "jonalt",
 ]
 
 HEADERS = {"User-Agent": "kattis-friends-tracker/1.0 (+https://github.com/aroncullberg)"}
