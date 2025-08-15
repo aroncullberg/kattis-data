@@ -15,7 +15,7 @@ FRIENDS = [
     "jonalt",
 ]
 
-HEADERS = {"User-Agent": "kattis-friends-tracker/1.0 (+https://github.com/aroncullberg)"}
+HEADERS = {"User-Agent": "kattis-data/1.0 (+https://github.com/aroncullberg)"}
 
 
 def score_from_html(html: str) -> float:
