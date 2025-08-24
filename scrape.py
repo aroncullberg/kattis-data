@@ -13,6 +13,8 @@ FRIENDS = [
     "rasmus-melin",
     "viktor6",
     "jonalt",
+    "jonathan-vestin",
+    "martin-blom",
 ]
 
 HEADERS = {"User-Agent": "kattis-data/1.0 (+https://github.com/aroncullberg)"}
